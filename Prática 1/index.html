@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trabalho Prático</title>
+    <link rel="stylesheet" type="text/css" href="./css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="./css/index.css" />
+  </head>
+  <body>
+    <h1 id="title">Trabalho Prático 01</h1>
+    <div id="ranges">
+      <div class="names">
+        <span class="itens"> (R) Vermelho: </span>
+        <span class="itens"> (G) Verde: </span>
+        <span class="itens"> (B) Azul: </span>
+      </div>
+      <div class="selectors">
+        <input type="range" min="0" max="255" id="red-range" class="itens" />
+        <input type="range" min="0" max="255" id="green-range" class="itens" />
+        <input type="range" min="0" max="255" id="blue-range" class="itens" />
+      </div>
+      <div class="values">
+        <input
+          type="text"
+          id="red-label"
+          class="itens value-input"
+          disabled
+          readonly
+        />
+        <input
+          type="text"
+          id="green-label"
+          class="itens value-input"
+          disabled
+          readonly
+        />
+        <input
+          type="text"
+          id="blue-label"
+          class="itens value-input"
+          disabled
+          readonly
+        />
+      </div>
+    </div>
+    <div id="panel-color" class="panel-color"></div>
+    <script type="text/javascript" src="./js/main.js"></script>
+  </body>
+</html>

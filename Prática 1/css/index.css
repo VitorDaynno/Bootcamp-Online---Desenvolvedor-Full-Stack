@@ -1,0 +1,48 @@
+.panel-color {
+  width: 200px;
+  min-height: 200px;
+  border-color: black;
+  border-width: 1px;
+  border-style: double;
+  margin-top: 5%;
+  margin-left: 40%;
+}
+
+#title {
+  text-align: center;
+  margin-top: 5%;
+  margin-bottom: 90px;
+  font-size: 2rem;
+}
+
+#ranges {
+  display: flex;
+  justify-content: center;
+}
+
+.names {
+  display: flex;
+  flex-direction: column;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.selectors {
+  display: flex;
+  flex-direction: column;
+  margin-right: 5%;
+}
+
+.values {
+  display: flex;
+  flex-direction: column;
+  margin-right: 5%;
+}
+
+.itens {
+  margin-bottom: 10px;
+}
+
+.value-input {
+  max-width: 30px;
+}
