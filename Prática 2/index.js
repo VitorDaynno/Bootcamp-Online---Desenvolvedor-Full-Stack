@@ -1,7 +1,9 @@
 import { promises as fs } from 'fs';
 
-const start = () => {
+const start = async () => {
   generateFiles();
+  const quantityCity = await countCities('MG');
+  console.log(quantityCity);
 };
 
 const generateFiles = async () => {
@@ -23,8 +25,8 @@ const getCities = async () => {
   return cities;
 };
 
-const getInfoByFile = async (filename) => {
-  const contentFile = await fs.readFile(filename);
+const getInfoByFile = async (path) => {
+  const contentFile = await fs.readFile(path);
   return JSON.parse(contentFile);
 };
 
@@ -36,6 +38,13 @@ const generateStateFile = (state, cities) => {
     }
   });
   fs.writeFile(`./states/${state.Sigla}.json`, JSON.stringify(citiesInState));
+};
+
+const countCities = async (state) => {
+  const filename = state.toUpperCase();
+  const path = `states/${filename}.json`;
+  const cities = await getInfoByFile(path);
+  return cities.length;
 };
 
 start();
