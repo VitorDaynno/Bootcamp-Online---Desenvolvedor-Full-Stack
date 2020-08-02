@@ -183,7 +183,10 @@ const biggestNameCityInStates = async () => {
 const smallestNameCityInStates = async () => {
   const smallestNameCityInStates = await getMinorCityNames();
   smallestNameCityInStates.sort((a, b) => {
-    return b.city.length - a.city.length;
+    if (a.city.length == b.city.length) {
+      return a.city > b.city ? 1 : -1;
+    }
+    return a.city.length - b.city.length;
   });
   console.log(smallestNameCityInStates[0].city);
 };
