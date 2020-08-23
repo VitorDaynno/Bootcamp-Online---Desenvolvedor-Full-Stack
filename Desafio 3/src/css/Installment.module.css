@@ -1,0 +1,36 @@
+.installment {
+  border: 2px solid gray;
+  display: flex;
+  margin-bottom: 10px;
+  margin-left: 15px;
+  padding: 5px;
+  width: 15%;
+  align-items: center;
+  border-radius: 7px;
+}
+
+.month {
+  width: 15%;
+  display: flex;
+  align-items: center;
+}
+
+.values {
+  width: 90%;
+}
+
+.percentageGain {
+  color: #1e90ff;
+}
+
+.percentageLoss {
+  color: #d2691e;
+}
+
+.gain {
+  color: green;
+}
+
+.loss {
+  color: #dc143c;
+}

@@ -1,0 +1,6 @@
+{
+  "short_name": "Desafio 3",
+  "name": "Desafio 3 - Calculadora de Juros Compostos",
+  "start_url": ".",
+  "display": "standalone"
+}
