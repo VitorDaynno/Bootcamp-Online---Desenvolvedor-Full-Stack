@@ -130,11 +130,67 @@ class TransactionService {
       month,
       day,
       type,
-      yearMonth: `${year}-${month}`,
-      yearMonthDay: `${year}-${month}-${day}`,
+      yearMonth: `${year}-${month > 9 ? month : '0' + month}`,
+      yearMonthDay: `${year}-${month > 9 ? month : '0' + month}-${
+        day > 9 ? day : '0' + day
+      }`,
     };
 
     return transaction;
+  };
+
+  getConsolidatedInfo = async (req, res) => {
+    logger.info('Getting consolidated info');
+    try {
+      const { period } = req.query;
+
+      if (!period || period === '') {
+        const error = {
+          code: 400,
+          message: 'The param period is required',
+        };
+        throw error;
+      }
+
+      const filter = {
+        yearMonth: period,
+      };
+
+      const transactions = await transactionModel.find(filter);
+
+      const consolidatedInfo = this.processInfo(transactions);
+
+      res.status(200).json(consolidatedInfo);
+    } catch (error) {
+      const { code, message } = error;
+      const responseCode = code || 500;
+      const responseMessage = message || 'An error occurred';
+      res.status(responseCode).json({ message: responseMessage });
+    }
+  };
+
+  processInfo = (transactions) => {
+    const transactionsCount = transactions.length;
+    let revenueTotal = 0;
+    let expenseTotal = 0;
+
+    transactions.forEach((transaction) => {
+      const { value, type } = transaction;
+      type == '+'
+        ? (revenueTotal = revenueTotal + value)
+        : (expenseTotal += value);
+    });
+
+    const balanceTotal = revenueTotal - expenseTotal;
+
+    const consolidatedInfo = {
+      transactionsCount,
+      revenueTotal,
+      expenseTotal,
+      balanceTotal,
+    };
+
+    return consolidatedInfo;
   };
 }
 

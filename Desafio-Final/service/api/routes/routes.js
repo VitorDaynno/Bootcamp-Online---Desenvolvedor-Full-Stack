@@ -15,4 +15,6 @@ app
   .put(transactionService.update)
   .delete(transactionService.delete);
 
+app.route('/v1/consolidated-infos').get(transactionService.getConsolidatedInfo);
+
 export default app;
